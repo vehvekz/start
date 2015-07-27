@@ -12,24 +12,23 @@ var gulp = require('gulp'),
 	pngquant = require('imagemin-pngquant'),
 	rimraf = require('rimraf'),
 	plumber = require('gulp-plumber'),
-	gutil = require('gulp-util'),
 	browserSync = require("browser-sync"),
 	reload = browserSync.reload;
 
 // Пути для всех файлов проекта
 var path = {
-	build: { //Тут мы укажем куда складывать готовые файлы после сборки
+	build: { 
 		html: 'build/',
 		js: 'build/js/',
 		css: 'build/css/',
 		img: 'build/img/',
 		fonts: 'build/fonts/'
 	},
-	src: { //Пути откуда брать исходники
-		html: 'src/index.jade', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
-		js: 'src/js/main.js',//В стилях и скриптах нам понадобятся только main файлы
+	src: {
+		html: 'src/index.jade',
+		js: 'src/js/main.js',
 		style: 'src/style/common.sass',
-		img: 'src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
+		img: 'src/img/**/*.*',
 		fonts: 'src/fonts/**/*.*'
 	},
 	watch: { 
@@ -60,20 +59,20 @@ gulp.task('html:build', function () {
 	.pipe(jade({
 			pretty: true
 		}))
-	.pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
-	.pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
+	.pipe(gulp.dest(path.build.html)) 
+	.pipe(reload({stream: true})); 
 });
 
 // JavaScript build
 gulp.task('js:build', function () {
-	gulp.src(path.src.js) //Найдем наш main файл
+	gulp.src(path.src.js) 
 		.pipe(plumber())
-		.pipe(rigger()) //Прогоним через rigger
-		.pipe(sourcemaps.init()) //Инициализируем sourcemap
-		.pipe(uglify()) //Сожмем наш js
-		.pipe(sourcemaps.write()) //Пропишем карты
-		.pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
-		.pipe(reload({stream: true})); //И перезагрузим сервер
+		.pipe(rigger()) 
+		.pipe(sourcemaps.init()) 
+		.pipe(uglify()) 
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(path.build.js))
+		.pipe(reload({stream: true}));
 });
 
 // Style build
@@ -85,7 +84,7 @@ gulp.task('style:build', function () {
 			errLogToConsole: true
 		}))
 		.pipe(autoprefixer({
-			browsers: ['last 4 versions'],
+			browsers: browsers: ['last 15 version', '> 1%', 'ie 8'],
 			cascade: true
 		}))
 		.pipe(cssmin())
@@ -96,14 +95,14 @@ gulp.task('style:build', function () {
 
 // Image build
 gulp.task('image:build', function () {
-	gulp.src(path.src.img) //Выберем наши картинки
-		.pipe(imagemin({ //Сожмем их
+	gulp.src(path.src.img)
+		.pipe(imagemin({ 
 			progressive: true,
 			svgoPlugins: [{removeViewBox: false}],
 			use: [pngquant()],
 			interlaced: true
 		}))
-		.pipe(gulp.dest(path.build.img)) //И бросим в build
+		.pipe(gulp.dest(path.build.img))
 		.pipe(reload({stream: true}));
 });
 

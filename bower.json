@@ -1,16 +1,14 @@
 {
-  "name": "landing_portfolio_1",
+  "name": "Start",
   "version": "0.0.1",
   "authors": [
-    "alexey savkin"
+    "Alexey Savkin"
   ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ],
   "dependencies": {
     "normalize.css": "*",
