@@ -1,0 +1,50 @@
+// begin catalog 
+section.catalog
+	.container
+		.row
+			.col-md-12
+				h2.section-title.-black Каталог продукции
+		.row
+			.col-md-3.col-sm-4.col-xs-12
+				.catalog_item-wrap
+					img.catalog_pic(src="img/tube/tube1.jpg", alt="tube_products")
+					h4.catalog_title Трубы сварные
+			.col-md-3.col-sm-4.col-xs-12
+				.catalog_item-wrap
+					img.catalog_pic(src="img/tube/tube2.jpg", alt="tube_products")
+					h4.catalog_title Трубы бесшовные
+			.col-md-3.col-sm-4.col-xs-12
+				.catalog_item-wrap
+					img.catalog_pic(src="img/tube/tube3.jpg", alt="tube_products")
+					h4.catalog_title Трубы из цветных металлов
+			.col-md-3.col-sm-4.col-xs-12
+				.catalog_item-wrap
+					img.catalog_pic(src="img/tube/tube4.jpg", alt="tube_products")
+					h4.catalog_title Трубы по черчежам
+		.row
+			.col-md-12
+				.form.-cat-form
+					form(action="#")
+						label.form_title Заполните форму и полный каталог будет выслан Вам на почту
+						input.form_input(type="text", name="name", placeholder="Имя", required) 
+						input.form_input(type="tel", name="phone", placeholder="Телефон", required) 
+						input.form_input(type="email", name="email", placeholder="E-mail", required) 
+						button.button.-form-button(type"submit", role="button") Отправить заявку
+section.list
+	.container
+		.row
+			.col-md-12
+				h2.section-title.-black Мы поставляем все необходимое:
+		.row
+			.col-md-4.col-sm-6.col-xs-12
+				ul.products
+					li.products_item Трубу
+					li.products_item Крепеж
+					li.products_item Балки
+			.col-md-4.col-sm-6.col-xs-12
+				ul.products
+					li.products_item Детали трубопровода
+					li.products_item Металлопрокат
+			.col-md-4.hidden-sm.hidden-xs
+				.list_img
+// end catalog 

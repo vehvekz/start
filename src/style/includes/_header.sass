@@ -1,0 +1,62 @@
+.header
+	background-color: $headerBg
+	padding: 32px 0 20px
+
+.header_discr
+	float: left
+.discr
+	font:
+		size: 14px
+		weight: 700
+	text-transform: uppercase
+	margin-bottom: 26px
+	&:last-child
+		margin-bottom: 0
+	.-accent-span
+		color: $accentColor1
+
+.header_tel
+	float: right
+.tel
+	position: relative
+	margin-left: 32px
+	font:
+		size: 17px
+		weight: 700
+	text-transform: uppercase
+	&::before
+		content: ""
+		width: 20px
+		height: 50px
+		position: absolute
+		top: 0
+		left: -30px
+		background: url('../img/sprite.png') no-repeat -370px 10px 
+.button
+	display: block
+	padding: 10px 44px
+	text-transform: uppercase
+	color: $darkColor
+	font:
+		size: 19px
+		weight: 700
+	text-shadow: 1px 1px rgba(255,255,255,.4)
+	border: 1px solid $accentBorder
+	border-bottom: 3px solid $accentBorderBottom
+	border-radius: 3px
+	background: #ffc033
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmYzAzMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZjllMDQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+)
+	background: -moz-linear-gradient(top, #ffc033 0%, #ff9e04 100%) /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc033), color-stop(100%,#ff9e04)) /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffc033 0%,#ff9e04 100%) /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffc033 0%,#ff9e04 100%) /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffc033 0%,#ff9e04 100%) /* IE10+ */
+	background: linear-gradient(to bottom, #ffc033 0%,#ff9e04 100%) /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc033', endColorstr='#ff9e04',GradientType=0 ) /* IE6-8 */
+	&.-small-font
+		font-size: 15px
+		padding: 10px 16px
+		margin-top: 10px
+
+
+

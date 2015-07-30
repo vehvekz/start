@@ -1,0 +1,87 @@
+.tube
+	position: relative
+	padding-top: 70px
+	&::after
+		content: ""
+		position: absolute
+		top: 100%
+		left: 50%
+		margin-left: -800px
+		border: 800px solid transparent
+		border-top: 120px solid $mainColor
+		z-index: 5
+
+.tube_title
+	text-transform: uppercase
+	text-align: center
+	color: $darkColor
+	font: 
+		size: 51px
+		weight: 700
+	letter-spacing: 3px
+.tube_discr 
+	text-transform: uppercase
+	text-align: center
+	color: $darkColor
+	font: 
+		size: 30px
+		weight: 700
+	letter-spacing: 2px
+	margin-bottom: 50px
+	.-accent-span
+		color: $accentColor2
+.tube_img
+	background: url('../img/tube_bg1.png') no-repeat 0 0
+	width: 511px
+	height: 368px
+
+.form
+	position: relative
+	width: 400px
+	margin: 0 auto
+	padding: 28px 28px 45px
+	background-color: $headerBg
+	border-radius: 3px
+	text-align: center
+	&::after
+		content: ""
+		position: absolute
+		top: -126px
+		right: -183px
+		width: 454px
+		height: 456px
+		background: url('../img/tube_bg2.png') no-repeat 0 0
+		z-index: -10
+	.form_title
+		display: block
+		margin: 0 auto
+		width: 70%
+		text-transform: uppercase
+		color: $accentColor1
+		font:
+			size: 19px
+			weight: 700
+		line-height: 1
+	.form_input
+		display: block
+		width: 100%
+		margin-top: 12px
+		padding: 5px 10px
+		color: $inputColor
+		font: 
+			size: 16px
+			weight: 700
+		&::-moz-placeholder
+			color: $inputColor
+		&::-webkit-input-placeholder
+			color: $inputColor
+.-form-button
+	width: 320px
+	position: absolute
+	bottom: -25px
+	left: 50%
+	margin-left: -160px
+
+
+
+

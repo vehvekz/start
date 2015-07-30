@@ -1,0 +1,71 @@
+// Section catalog
+.catalog
+	padding: 120px 0 0
+	background: $accentColor1
+	position: relative
+
+.catalog_item-wrap
+	width: 206px
+	height: 260px
+	margin: 0 auto
+.catalog_pic
+	display: block
+	width: 206px
+	height: 185px
+	border-radius: 3px
+.catalog_title
+	margin: 10px 0
+	text-align: center
+	color: $darkColor
+	font:
+		size: 19px
+		weight: 700
+
+.-cat-form
+	width: 100%
+	margin: 0
+	position: relative
+	bottom: -60px
+	&::after
+		display: none
+	.form_title
+		text-transform: none
+	.form_input
+		display: inline-block
+		width: 30%
+		margin-left: 20px
+		&:nth-child(2)
+			margin-left: 0px
+
+// Section list
+.list
+	padding: 80px 0 50px
+
+.products
+	margin: 0
+	padding: 0
+.products_item
+	position: relative
+	font:
+		size: 24px
+		weight: 700
+	color: $grayColor
+	list-style-type: none
+	padding: 10px 10px 10px 60px
+	margin: 15px 0
+	text-align: left
+	&::before
+		content: ""
+		position: absolute
+		top: 11px
+		left: 0
+		width: 40px
+		height: 40px
+		background: url('../img/sprite.png') no-repeat -392px 0px
+.list_img
+	width: 340px
+	height: 280px
+	background: url('../img/list_tube.jpg') no-repeat 0 0
+	margin-left: 40px
+
+

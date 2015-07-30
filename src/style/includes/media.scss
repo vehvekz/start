@@ -12,17 +12,48 @@
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-	
+	.tube {
+		padding-top: 30px;
+	}
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-	
+	.header_tel {
+		float: none;
+		text-align: center;
+	}
+	.header_discr {
+		float: none;
+		text-align: center;
+	}
+	.tel {
+		margin-left: 0px;
+		display: inline-block;
+	}
+	.button.-small-font {
+		display: block;
+		margin: 10px auto 0;
+	}
+	.form::after {
+		display: none;
+	}
+	.-cat-form .form_input{
+		display: block;
+		width: 100%;
+		margin-left: 0;
+	}
 }
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
-
+	.form {
+		width: 290px;
+	}
+	.-form-button {
+		width: 260px;
+		margin-left: -130px;
+	}
 }
 
 

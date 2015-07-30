@@ -84,7 +84,7 @@ gulp.task('style:build', function () {
 			errLogToConsole: true
 		}))
 		.pipe(autoprefixer({
-			browsers: browsers: ['last 15 version', '> 1%', 'ie 8'],
+			browsers: ['last 15 version', '> 1%', 'ie 8'],
 			cascade: true
 		}))
 		.pipe(cssmin())

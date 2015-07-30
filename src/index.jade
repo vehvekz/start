@@ -1,16 +1,30 @@
+include ./templates/_mixins
+
 doctype html
 html
 	head
 		meta(charset='utf-8')
-		title Title page
+		title Pipe CustomShop
 		link(href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow&subset=latin,cyrillic', rel='stylesheet', type='text/css')
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1')
+		link(href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+		link(href='http://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic', rel='stylesheet', type='text/css')
 		link(rel='stylesheet', href='css/common.css')
+
+		+if-ie("lt IE 9") <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+		+if-ie("gte IE 9") <style type="text/css">.gradient {filter: none;}</style>
 
 	body
 		.wrapper
 			include ./templates/_header
+			include ./templates/_tube
+			include ./templates/_catalog
+			include ./templates/_advantage
+			include ./templates/_map
+			include ./templates/_sertificates
 			include ./templates/_footer
+ 
+	script(src="js/main.js")
 
-		script(src="js/main.js")
+
