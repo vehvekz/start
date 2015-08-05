@@ -11,12 +11,10 @@
     "bower_components"
   ],
   "dependencies": {
-    "normalize.css": "*",
     "jquery": "2.*",
     "magnific-popup": "~1.0.0",
     "mixitup": "~2.1.8",
     "wow": "~1.1.2",
     "slick.js": "~1.5.5",
-    "normalize": "~1.0.4"
   }
 }

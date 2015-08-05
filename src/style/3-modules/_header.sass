@@ -26,12 +26,10 @@
 	text-transform: uppercase
 	&::before
 		content: ""
-		width: 20px
-		height: 50px
 		position: absolute
-		top: 0
+		top: 10px
 		left: -30px
-		background: url('../img/sprite.png') no-repeat -370px 10px 
+		+sprite($s-tel)
 .button
 	display: block
 	padding: 10px 44px
