@@ -84,7 +84,7 @@ gulp.task('js:build', function () {
 gulp.task('style:build', function () {
 	gulp.src(path.src.style)
 		.pipe(plumber())
-		// .pipe(sourcemaps.init())
+		.pipe(sourcemaps.init())
 		.pipe(sass({
 			indentedSyntax: true
 		}))
@@ -92,8 +92,8 @@ gulp.task('style:build', function () {
 			browsers: ['last 15 version', '> 1%', 'ie 8'],
 			cascade: true
 		}))
-		// .pipe(cssmin())
-		// .pipe(sourcemaps.write())
+		.pipe(cssmin())
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(path.build.css))
 		.pipe(reload({stream: true}));
 });
