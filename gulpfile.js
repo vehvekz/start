@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 	rigger = require('gulp-rigger'),
 	imagemin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
-	rimraf = require('rimraf'),
+	clean = require('gulp-clean'),
 	plumber = require('gulp-plumber'),
 	browserSync = require("browser-sync"),
 	reload = browserSync.reload,
@@ -139,14 +139,25 @@ gulp.task('fonts:build', function() {
 		.pipe(gulp.dest(path.build.fonts))
 });
 
-// Build task 
-gulp.task('build', [
+// Developer task 
+gulp.task('dev', [
+	'clean',
 	'html:build',
 	'js:build',
-	'style:build',
 	'fonts:build',
 	'sprite:build',
-	'image:build'
+	'style:build'
+]);
+
+// Build task 
+gulp.task('build', [
+	'clean',
+	'html:build',
+	'js:build',
+	'fonts:build',
+	'sprite:build',
+	'image:build',
+	'style:build'
 ]);
 
 // watch task
@@ -165,10 +176,12 @@ gulp.task('webserver', function () {
 });
 
 // Clean task
-gulp.task('clean', function (cb) {
-	rimraf(path.clean, cb);
+gulp.task('clean', function () {
+    return gulp.src(path.clean, {read: false})
+    	.pipe(plumber())
+        .pipe(clean());
 });
 
 // Default task
-gulp.task('default', ['build', 'webserver', 'watch']);
+gulp.task('default', ['dev', 'webserver', 'watch']);
 
