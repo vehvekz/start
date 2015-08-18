@@ -12,9 +12,12 @@ var gulp = require('gulp'),
 	pngquant = require('imagemin-pngquant'),
 	clean = require('gulp-clean'),
 	plumber = require('gulp-plumber'),
-	browserSync = require("browser-sync"),
+	browserSync = require('browser-sync'),
 	reload = browserSync.reload,
-	spritesmith  = require('gulp.spritesmith');
+	spritesmith  = require('gulp.spritesmith'),
+	svgSprite = require('gulp-svg-sprites'),
+	svgo = require('gulp-svgo'),
+	svgstore = require('gulp-svgstore');
 
 // Пути для всех файлов проекта
 var path = {
@@ -25,7 +28,8 @@ var path = {
 		img: './build/img/',
 		spriteImg: './build/img/',
 		spriteSass: './src/style/2-base/',
-		fonts: './build/fonts/'
+		fonts: './build/fonts/',
+		svg: './build/img/svg'
 	},
 	src: {
 		html: './src/index.jade',
@@ -33,15 +37,17 @@ var path = {
 		style: './src/style/common.sass',
 		sprite: './src/img/sprite/*.*',
 		img: ['./src/img/**/*.*', '!./src/img/sprite/*.*'],
-		fonts: './src/fonts/**/*.*'
+		fonts: './src/fonts/**/*.*',
+		svg: './src/img/svg/*.svg'
 	},
 	watch: { 
 		html: './src/**/*.jade',
 		js: './src/js/**/*.js',
 		style: ['./src/style/**/*.sass', './src/style/**/*.scss'],
 		sprite: './src/img/sprite/*.*',
-		img: ['./src/img/**/*.*', '!./src/img/sprite/*.*'],
-		fonts: './src/fonts/**/*.*'
+		img: ['./src/img/**/*.*', '!./src/img/sprite/*.*', '!./src/img/svg/*.*'],
+		fonts: './src/fonts/**/*.*',
+		svg: './src/img/svg/*.svg'
 	},
 	clean: './build'
 };
@@ -98,7 +104,7 @@ gulp.task('style:build', function () {
 		.pipe(reload({stream: true}));
 });
 
-// Sprite Build
+// Png sprite build
 gulp.task('sprite:build', function() {
 	var spriteData = 
 		gulp.src(path.src.sprite) // путь, откуда берем картинки для спрайта
@@ -113,9 +119,36 @@ gulp.task('sprite:build', function() {
 					sprite.name = 's-' + sprite.name
 				}
 			}));
-
-	spriteData.img.pipe(gulp.dest(path.build.spriteImg)); // путь, куда сохраняем картинку
+	spriteData.img.pipe(gulp.dest(path.build.spriteImg)); // путь, куда сохраняем спрайт
 	spriteData.css.pipe(gulp.dest(path.build.spriteSass)); // путь, куда сохраняем стили
+});
+
+// // SVG sprite build
+// gulp.task('svg:build', function () {
+//     return gulp.src(path.src.svg)
+//     	.pipe(svgo())
+//         .pipe(svgSprite({
+//         	preview: false,
+//             layout: 'diagonal',
+//             padding: 5,
+//         	cssFile: "../../../src/style/2-base/_svg.scss",
+//         	svg: {
+//         		sprite: "spriteSvg.svg"
+//         	}
+        	
+//         }))
+//         .pipe(gulp.dest(path.build.svg));
+// });
+
+// SVG sprite build with gulp-svgstore plugin
+gulp.task('svg:build', function () {
+    return gulp
+        .src(path.src.svg)
+        .pipe(svgo())
+        .pipe(svgstore({
+        	inlineSvg: true
+        }))
+        .pipe(gulp.dest(path.build.svg));
 });
 
 // Image build
