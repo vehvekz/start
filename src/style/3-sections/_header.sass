@@ -1,0 +1,55 @@
+header
+	margin-bottom: 100px
+	background-color: $lightblue
+.alert
+	display: none
+.cart-box, .cart-box:hover, .cart-box:focus
+	text-align: center
+	text-decoration: none
+	color: $mainFont
+.cart-box
+	display: block
+	position: absolute
+	top: 5px
+	right: 0
+	&.cart-box__fixed
+		position: fixed
+		width: 100%
+		right: 0
+.status-wrap
+	width: 300px
+	padding: 5px 10px
+	margin: 0 auto
+	background-color: $lightgreen
+	border-radius: 10px
+	border: 2px dashed $borderColor
+	.cart
+		margin-right: 10px
+.doit
+	width: 150px
+	cursor: pointer
+	background-color: $accentFont
+	border-radius: 0 0 7px 7px
+	margin: 0 auto
+
+// Модальное окно
+.modal
+	background-color: #eaeaea
+.control-label
+	padding-top: 4px
+	font:
+		size: 1.2em
+		color: $mainFont
+		weight: 400
+.text-in
+	display: inline-block
+	vertical-align: middle
+	font-size: 1.2em
+	.x
+		color: $accentFont
+.input-group
+	width: 160px
+.input-group-addon
+	width: 40px
+.form-control
+	max-width: 200px

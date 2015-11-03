@@ -1,5 +1,4 @@
 'use strict';
-
 var gulp = require('gulp'),
 	jade = require('gulp-jade'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -38,7 +37,8 @@ var path = {
 		sprite: './src/img/sprite/*.*',
 		img: ['./src/img/**/*.*', '!./src/img/sprite/*.*'],
 		fonts: './src/fonts/**/*.*',
-		svg: './src/img/svg/*.svg'
+		svg: './src/img/svg/*.svg',
+		json: './src/data.json'
 	},
 	watch: { 
 		html: './src/**/*.jade',
@@ -47,7 +47,8 @@ var path = {
 		sprite: './src/img/sprite/*.*',
 		img: ['./src/img/**/*.*', '!./src/img/sprite/*.*', '!./src/img/svg/*.*'],
 		fonts: './src/fonts/**/*.*',
-		svg: './src/img/svg/*.svg'
+		svg: './src/img/svg/*.svg',
+		json: './src/data.json'
 	},
 	clean: './build'
 };
@@ -57,7 +58,7 @@ var config = {
 	server: {
 		baseDir: "./build"
 	},
-	tunnel: true,
+	tunnel: false,
 	host: 'localhost',
 	port: 9000,
 	logPrefix: "Frontend_work"
@@ -135,20 +136,20 @@ gulp.task('sprite:build', function() {
 //         	svg: {
 //         		sprite: "spriteSvg.svg"
 //         	}
-        	
+			
 //         }))
 //         .pipe(gulp.dest(path.build.svg));
 // });
 
 // SVG sprite build with gulp-svgstore plugin
 gulp.task('svg:build', function () {
-    return gulp
-        .src(path.src.svg)
-        .pipe(svgo())
-        .pipe(svgstore({
-        	inlineSvg: true
-        }))
-        .pipe(gulp.dest(path.build.svg));
+	return gulp
+		.src(path.src.svg)
+		.pipe(svgo())
+		.pipe(svgstore({
+			inlineSvg: true
+		}))
+		.pipe(gulp.dest(path.build.svg));
 });
 
 // Image build
@@ -172,14 +173,22 @@ gulp.task('fonts:build', function() {
 		.pipe(gulp.dest(path.build.fonts))
 });
 
+// json build
+gulp.task('json:build', function() {
+	gulp.src(path.src.json)
+		.pipe(plumber())
+		.pipe(gulp.dest(path.build.html))
+});
+
 // Developer task 
 gulp.task('dev', [
-	'clean',
 	'html:build',
 	'js:build',
 	'fonts:build',
+	'image:build',
 	'sprite:build',
-	'style:build'
+	'style:build',
+	'json:build'
 ]);
 
 // Build task 
@@ -190,7 +199,8 @@ gulp.task('build', [
 	'fonts:build',
 	'sprite:build',
 	'image:build',
-	'style:build'
+	'style:build',
+	'json:build'
 ]);
 
 // watch task
@@ -201,6 +211,7 @@ gulp.task('watch', function () {
 	gulp.watch(path.watch.img, ['image:build']);
 	gulp.watch(path.watch.sprite, ['sprite:build']);
 	gulp.watch(path.watch.fonts, ['fonts:build']);
+	gulp.watch(path.watch.json, ['json:build']);
 });
 
 // Webserver with livereload
@@ -210,9 +221,9 @@ gulp.task('webserver', function () {
 
 // Clean task
 gulp.task('clean', function () {
-    return gulp.src(path.clean, {read: false})
-    	.pipe(plumber())
-        .pipe(clean());
+	return gulp.src(path.clean, {read: false})
+		.pipe(plumber())
+		.pipe(clean());
 });
 
 // Default task

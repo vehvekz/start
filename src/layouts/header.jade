@@ -1,0 +1,43 @@
+header.header
+	.container
+		.row
+			.col-md-12
+				//- Корзина в шапке
+				a.cart-box(data-toggle="modal")
+					p.status-wrap
+						span.cart.fa.fa-shopping-cart
+						span#status Ваша корзина пуста
+					.doit Заказать!
+
+				//- Модальное окно заказа
+				.modal.fade#myModal(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+					.modal-dialog
+						.modal-content
+							.modal-header
+								button.close(data-dismiss="modal", aria-hidden="true") &times;
+								h4.modal-title Корзина
+							.modal-body
+								.msg
+								form.form-horizontal(role="form", id="order-form")
+									h4 Ваш заказ
+									.wrap(id="order")
+									//- Сюда приходят заказы
+									h4 Ваши данные
+									.wrap
+										.form-group
+											label.col-xs-3.control-label(for="name") Ваше имя
+											.col-xs-9
+												input.form-control(type="name", id="name", placeholder="Имя", name="name")
+										.form-group
+											label.col-xs-3.control-label E-mail
+											.col-xs-9
+												input.form-control(type="email", id="email", placeholder="E-mail", name="email")
+							.modal-footer
+								button.btn.btn-default(type="button", data-dismiss="modal") Продолжить
+								button.btn.btn-warning(type="submit", form="order-form") Заказать
+								
+				//- Сообщение об ошибке
+				.container.message-box
+					.alert.alert-warning Вы не выбрали ни одного товара.
+				
+

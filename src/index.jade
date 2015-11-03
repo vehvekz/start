@@ -1,4 +1,4 @@
-include ./layouts/_mixins
+include ./layouts/mixins
 
 doctype html
 html
@@ -17,7 +17,9 @@ html
 		.hidden
 
 		.wrapper
-			include ./layouts/_header
-			include ./layouts/_footer
+			include ./layouts/header
+			include ./layouts/content
+			include ./layouts/footer
 
 	script(src="js/main.js")
+	include ./layouts/products

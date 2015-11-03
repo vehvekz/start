@@ -1,0 +1,21 @@
+//- IE mixin
+mixin if-ie(condition, showInNonIeBrowser)
+	- if(showInNonIeBrowser == null) showInNonIeBrowser = condition == "!IE";
+	!= "<!--[if " + condition + "]>"
+	if showInNonIeBrowser
+		!= "-->"
+	block
+	if showInNonIeBrowser
+		!= "<!--"
+	!= "<![endif]-->"
+
+//- SVG Mixin
+mixin svg(name, all) 
+	if (all)
+		svg(class=name + " " + all)
+			use(xlink:href="#" + name)
+	else
+		svg(class=name)
+			use(xlink:href="#" + name)
+
+

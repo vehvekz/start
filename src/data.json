@@ -1,0 +1,23 @@
+{
+	"blocks": [  
+		{
+			"name" : "Mexicana",
+			"alias" : "mexicana",
+			"price" : "500"
+		},
+		{
+			"name" : "Buffalo",
+			"alias" : "buffalo",
+			"price" : "400"
+		},
+		{
+			"name" : "Cambodian",
+			"alias" : "cambodian",
+			"price" : "450"
+		}
+	]
+}
+
+
+
+
