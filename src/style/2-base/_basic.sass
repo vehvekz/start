@@ -1,0 +1,69 @@
+html
+	font-size: 20px
+
+body
+	font:
+		family: "calibri", $helvetica
+		weight: 400
+		size: $fz
+	line-height: 1.4
+	color: $main
+
+.wrapper
+	box-sizing: border-box
+	overflow-x: hidden
+	padding: 0
+	margin: 0 auto
+	min-width: 320px
+	max-width: 1920px
+	width: 100%
+	position: relative
+	-webkit-font-smoothing: antialised
+.container
+	width: 83.7rem
+	margin: 0 auto
+
+ul
+	padding: 0
+	margin: 0
+	li
+		list-style-type: none
+		padding: 0
+		margin: 0
+a, a:hover, a:focus, a:visited
+	text-decoration: none
+	color: $main
+a::before, a::after
+	transition: all .5s ease-in-out
+a
+	cursor: pointer
+	// transition: all .5s ease-in-out
+h1, h2, h3, h4, h5, h6, p
+	margin: 0
+	padding: 0
+button
+	outline: none
+	border: none
+	background: transparent
+	cursor: pointer
+
+	/********** Srction Title **********/
+.section-title
+	font:
+		family: "bebas-neue"
+		size: 5.5rem
+		weight: 400
+	color: $h2
+	margin: 0
+	padding: 10rem 0 2rem
+	&._white
+		color: $white
+
+/********** Classes for animated display **********/
+.hidden
+	display: none
+.visuallyhidden
+	opacity: 0
+
+
+

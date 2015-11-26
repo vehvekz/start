@@ -16,6 +16,10 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "bourbon": "~4.2.6",
-    "handlebars": "~4.0.3"
+    "owl.carousel": "OwlCarousel2#~2.0.0-beta.3",
+    "fullpage.js": "fullpage#~2.7.4",
+    "slick": "*",
+    "mixitup": "~2.1.11",
+    "masonry": "~3.3.2"
   }
 }

@@ -1,0 +1,265 @@
+.header
+	position: relative
+	width: 100%
+/********** Topline **********/
+.topline_wrap
+	width: 100%
+	font:
+		family: "calibri-italic", $helvetica
+		size: 1.1rem
+	background-color: $purple
+	color: $topline
+	border-bottom: 0.1rem solid $lightcoffe
+.topline
+	height: 2.4rem
+	margin: 0 auto
+	&::before
+		content: ''
+		width: 0
+		height: 100%
+		display: inline-block
+		vertical-align: middle
+.topline_title
+	padding: 0 2.4rem 0 6.2rem
+	display: inline-block
+	vertical-align: middle
+.topline_social
+	display: inline-block
+	vertical-align: middle
+	padding-right: 4.1rem
+	line-height: 0
+	li
+		display: inline-block
+		a
+			text-align: center
+			line-height: 1.25rem
+			+size(1.25rem)
+			display: inline-block
+			padding: 0
+			color: $social
+			span
+				padding: 0
+				margin: 0
+		.fb
+			background-color: $fb
+		.tw
+			background-color: $tw
+		.in
+			background-color: $in
+		.vk
+			background-color: $vk
+		.ok
+			background-color: $ok
+		.yt
+			background-color: $yt
+		.ig
+			background-color: $ig
+.topline_time
+	display: inline-block
+	vertical-align: middle
+	padding-right: 2rem
+.topline_adress
+	display: inline-block
+	vertical-align: middle
+	padding-right: 2.8rem
+.topline_action
+	display: inline-block
+	vertical-align: middle
+	background-color: rgba(255,255,255,.1)
+	padding: 0.2rem 0.5rem 0
+	line-height: 1.3em
+	color: $topline
+	cursor: pointer
+
+/********** Main Menu Wrap **********/
+.main-menu_wrap
+	position: absolute
+	z-index: 400
+	// top: 2.6rem
+	height: 5.85rem
+	width: 100%
+	clear: both
+	background-color: $white
+	border-top: 0.2rem solid $accent
+	box-shadow: 0px 0.5rem 0 rgba(0,0,0,.15)
+	&.fixed
+		position: fixed
+		top: 0
+		left: 0
+		right: 0
+
+/********** Logo **********/
+.main-logo
+	width: 26.9rem
+	float: left
+	text-align: center
+	margin-right: 4rem
+.logo
+	width: 14.6rem
+	height: 2.4rem
+	display: inline-block
+	line-height: 0
+	margin-top: 0.9rem
+	text-indent: -9000px
+	background: url(../img/logo.png) no-repeat 0 0
+	background-size: cover
+.location
+	display: block
+	padding: .1rem 0 0
+	margin: 0
+	font:
+		size: 1.4rem
+		family: "calibri-bold", $helvetica
+	color: $gray
+	text-transform: uppercase
+
+/********** Main Menu Desktop **********/
+.main-menu
+	float: left
+	ul
+		li
+			display: inline-block
+			text-align: center
+			a
+				display: block
+				position: relative
+				line-height: 6rem
+				height: 5.7rem
+				padding: 0 1.55rem
+				font:
+					family: "calibri"
+					size: 1.35rem
+					weight: 400
+				text-transform: uppercase
+				color: $accent
+			&.active a
+				color: $white
+				background-color: $accent
+				box-shadow: 0 0.5rem 0 rgba(0,0,0,.15)
+				&::after
+					content: ''
+					display: block
+					position: absolute
+					bottom: -1.05rem
+					left: 50%
+					margin-left: -1.1rem
+					+triangle(2.2rem, $accent, down)
+				&::before
+					content: ''
+					display: block
+					position: absolute
+					bottom: -1.55rem
+					left: 50%
+					margin-left: -1.1rem
+					+triangle(2.2rem, rgba(0,0,0,.15), down)
+
+/********** Main Menu Mobile **********/
+.main-menu.toggle
+	z-index: 200
+	position: absolute
+	top: 5.7rem
+	left: 0
+	right: 0
+	height: 100vh
+	width: 100%
+	background-color: $white
+	border-top: 0.45rem solid $lightcoffe
+	transition: all .6s ease-in-out
+	ul
+		li
+			display: block
+
+/********** Toogle Button for mobile menu **********/
+.toggle-btn
+	position: relative
+	display: none
+	float: right
+	+size(50px 44px)
+	margin-top: 1.1rem
+	padding: 0
+	border: none
+	border-radius: 5px
+	cursor: pointer
+	z-index: 200
+	background-color: $accent
+$w: 32px
+$h: 3px
+.sandwich
+	width: $w
+	height: 30px
+	position: absolute
+	top: 8px
+	bottom: 0
+	left: 0
+	right: 0
+	margin: auto
+	z-index: 200
+.sw-topper
+	position: relative
+	top: 0
+	width: $w 
+	height: $h
+	background: $main
+	border: none
+	border-radius: 4px
+	transition: transform 0.5s, top 0.2s
+	display: block
+	//transition-delay: 0.2s, 0s
+.sw-bottom
+	position: relative
+	display: block
+	width: $w
+	height: $h
+	top: $h * 2.2
+	background: $main
+	border: none
+	border-radius: 4px
+	transition: transform 0.5s, top 0.2s
+	transition-delay: 0.2s, 0s
+.sw-footer
+	position: relative
+	display: block
+	width: $w
+	height: $h
+	top: $h * 4.5
+	background: $main
+	border: none
+	border-radius: 4px
+	transition: all 0.5s
+	transition-delay: 0.1s
+.sandwich.active
+	cursor:pointer
+	.sw-topper
+		top: 9px
+		transform: rotate(-45deg)
+	.sw-bottom
+		top: 6px
+		transform: rotate(45deg)
+	.sw-footer
+		opacity: 0
+		top: 0
+		transform: rotate(180deg)
+
+/********** Header Image **********/
+.main-image_wrap
+	height: 45.5rem
+	background-color: $lightcoffe
+.main-text
+	padding: 13rem 2rem 0 0
+	font:
+		family: "bebas-neue"
+		size: 9.5rem
+		weight: 100
+	text-transform: uppercase
+	color: $main
+	text-align: right
+	line-height: .71em
+	span
+		color: $accent
+		display: block
+
+
+
+
+
+

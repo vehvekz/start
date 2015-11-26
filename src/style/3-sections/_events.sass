@@ -1,0 +1,76 @@
+.events
+	background: url(../img/events_bg.jpg) no-repeat center top
+.events-wrap
+	position: relative
+	width: 40rem
+	margin: 0 auto
+	padding-bottom: 1.5rem
+
+/********** Event Menu **********/
+.events-menu_wrap
+	height: 3rem
+	border-bottom: 3px solid $white
+	margin-bottom: 1.25rem
+	li
+		display: inline-block
+		line-height: 3.25rem
+		padding: 0 1.75rem
+		height: 3rem
+		text-transform: uppercase
+		color: $white
+		font:
+			family: "calibri"
+			size: 0.9rem
+			weight: 500
+		transition: all .2s ease
+		cursor: pointer
+		&.active
+			background-color: $white
+			color: $main
+
+
+/********** Events item **********/
+.events-item_wrap
+	overflow-x: hidden
+	position: relative
+	margin: 0 -0.25rem
+.events-item
+	padding: 0 0.25rem 1rem
+	outline: none
+	text-align: left
+.events-item_pic
+	display: block
+	border-bottom: 0.75rem solid $accent2
+.events-item_discr
+	background-color: $white
+	padding: 1.5rem 1.25rem
+	.events-item_title
+		font-size: 1.1rem
+		line-height: 1
+	.events-item_content
+		padding-top: 1rem
+
+/********** Slideshow navigation **********/
+.events-prev, .events-next
+	position: absolute
+	top: 50%
+	margin-top: -1.25rem
+	+size(1.5rem 2.5rem)
+	color: $white
+	opacity: .6
+	font-size: 3rem
+	font-weight: 100
+	z-index: 10
+	outline: none
+	padding: 0
+	transition: all .1s ease
+	&:hover
+		opacity: 1
+	&:active
+		padding-top: 0.1rem
+.events-prev
+	left: -3.5rem
+.events-next
+	right: -3.5rem
+
+

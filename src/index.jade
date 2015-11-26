@@ -7,7 +7,7 @@ html
 		title Project title
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1')
-		link(href='http://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic', rel='stylesheet', type='text/css')
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
 		link(rel='stylesheet', href='css/common.css')
 
 		+if-ie("lt IE 9") <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
@@ -18,7 +18,10 @@ html
 
 		.wrapper
 			include ./layouts/header
-			include ./layouts/content
+			include ./layouts/about
+			include ./layouts/events
+			include ./layouts/shops
 			include ./layouts/footer
+
 
 	script(src="js/main.js")

@@ -1,5 +1,7 @@
 'use strict';
 var gulp = require('gulp'),
+	watch = require('gulp-watch'),
+	batch = require('gulp-batch'),
 	jade = require('gulp-jade'),
 	autoprefixer = require('gulp-autoprefixer'),
 	uglify = require('gulp-uglify'),
@@ -9,14 +11,15 @@ var gulp = require('gulp'),
 	rigger = require('gulp-rigger'),
 	imagemin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
-	clean = require('gulp-clean'),
+	// clean = require('gulp-clean'),
 	plumber = require('gulp-plumber'),
 	browserSync = require('browser-sync'),
 	reload = browserSync.reload,
-	spritesmith  = require('gulp.spritesmith'),
-	svgSprite = require('gulp-svg-sprites'),
-	svgo = require('gulp-svgo'),
-	svgstore = require('gulp-svgstore');
+	// svgSprite = require('gulp-svg-sprites'),
+	// svgo = require('gulp-svgo'),
+	// svgstore = require('gulp-svgstore'),
+	spritesmith  = require('gulp.spritesmith');
+
 
 // Пути для всех файлов проекта
 var path = {
@@ -96,7 +99,7 @@ gulp.task('style:build', function () {
 			indentedSyntax: true
 		}))
 		.pipe(autoprefixer({
-			browsers: ['last 15 version', '> 1%', 'ie 8'],
+			browsers: ['last 4 version', '> 1%', 'ie 8'],
 			cascade: true
 		}))
 		.pipe(cssmin())
@@ -142,17 +145,17 @@ gulp.task('sprite:build', function() {
 // });
 
 // SVG sprite build with gulp-svgstore plugin
-gulp.task('svg:build', function () {
-	return gulp
-		.src(path.src.svg)
-		.pipe(svgo())
-		.pipe(svgstore({
-			inlineSvg: true
-		}))
-		.pipe(gulp.dest(path.build.svg));
-});
+// gulp.task('svg:build', function () {
+// 	return gulp
+// 		.src(path.src.svg)
+// 		.pipe(svgo())
+// 		.pipe(svgstore({
+// 			inlineSvg: true
+// 		}))
+// 		.pipe(gulp.dest(path.build.svg));
+// });
 
-// Image build
+// // Image build
 gulp.task('image:build', function () {
 	gulp.src(path.src.img)
 		.pipe(plumber())
@@ -174,11 +177,11 @@ gulp.task('fonts:build', function() {
 });
 
 // json build
-gulp.task('json:build', function() {
-	gulp.src(path.src.json)
-		.pipe(plumber())
-		.pipe(gulp.dest(path.build.html))
-});
+// gulp.task('json:build', function() {
+// 	gulp.src(path.src.json)
+// 		.pipe(plumber())
+// 		.pipe(gulp.dest(path.build.html))
+// });
 
 // Developer task 
 gulp.task('dev', [
@@ -187,8 +190,7 @@ gulp.task('dev', [
 	'fonts:build',
 	'image:build',
 	'sprite:build',
-	'style:build',
-	'json:build'
+	'style:build'
 ]);
 
 // Build task 
@@ -199,20 +201,40 @@ gulp.task('build', [
 	'fonts:build',
 	'sprite:build',
 	'image:build',
-	'style:build',
-	'json:build'
+	'style:build'
 ]);
 
 // watch task
 gulp.task('watch', function () {
-	gulp.watch(path.watch.html, ['html:build']);
-	gulp.watch(path.watch.style, ['style:build']);
-	gulp.watch(path.watch.js, ['js:build']);
-	gulp.watch(path.watch.img, ['image:build']);
-	gulp.watch(path.watch.sprite, ['sprite:build']);
-	gulp.watch(path.watch.fonts, ['fonts:build']);
-	gulp.watch(path.watch.json, ['json:build']);
+	watch(path.watch.html, batch(function (events, done) {
+		gulp.start('html:build', done);
+	}));
+	watch(path.watch.style, batch(function (events, done) {
+		gulp.start('style:build', done);
+	}));
+	watch(path.watch.js, batch(function (events, done) {
+		gulp.start('js:build', done);
+	}));
+	watch(path.watch.img, batch(function (events, done) {
+		gulp.start('image:build', done);
+	}));
+	watch(path.watch.sprite, batch(function (events, done) {
+		gulp.start('sprite:build', done);
+	}));
+	watch(path.watch.fonts, batch(function (events, done) {
+		gulp.start('fonts:build', done);
+	}));
 });
+
+// gulp.task('watch', function () {
+// 	watch(path.watch.html, ['html:build']);
+// 	watch(path.watch.style, ['style:build']);
+// 	watch(path.watch.js, ['js:build']);
+// 	watch(path.watch.img, ['image:build']);
+// 	watch(path.watch.sprite, ['sprite:build']);
+// 	watch(path.watch.fonts, ['fonts:build']);
+// 	watch(path.watch.json, ['json:build']);
+// });
 
 // Webserver with livereload
 gulp.task('webserver', function () {
@@ -220,11 +242,10 @@ gulp.task('webserver', function () {
 });
 
 // Clean task
-gulp.task('clean', function () {
-	return gulp.src(path.clean, {read: false})
-		.pipe(plumber())
-		.pipe(clean());
-});
+// gulp.task('clean', function () {
+// 	return gulp.src(path.clean, {read: false})
+// 		.pipe(clean());
+// });
 
 // Default task
 gulp.task('default', ['dev', 'webserver', 'watch']);
