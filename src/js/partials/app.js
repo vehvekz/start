@@ -11,7 +11,7 @@
 		setUpListeners: function () {
 			var 
 				win = $(window),
-				toggleBtn = $('.toggle-btn'),
+				toggleBtn = $('.toggle-btn, .main-logo a'),
 				menuItems = toggleBtn.prev().find('a');
 
 			win.on('scroll', this.menuFixed);
@@ -57,9 +57,10 @@
 		menuFixed: function () {
 			var
 				wScroll = $(window).scrollTop(),
-				menuWrap = $('.main-menu_wrap');
+				menuWrap = $('.main-menu_wrap'),
+				topLine = $('.topline_wrap').height();
 
-			if (wScroll > 48) {
+			if (wScroll > topLine) {
 				menuWrap.addClass('fixed');
 			} else {
 				menuWrap.removeClass('fixed');

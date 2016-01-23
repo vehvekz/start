@@ -1,6 +1,6 @@
 (function(){
 
-	var itemLink = $('.main-menu a'),
+	var itemLink = $('.main-menu a, .main-logo a'),
 		menuOffset = 120;
 
 	var navigation = {
