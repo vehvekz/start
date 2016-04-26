@@ -1,0 +1,5 @@
+//- SVG icon from sprite.svg
+mixin icon(iconName)
+	svg(class='i-' + iconName)
+		use(xlink:href='/assets/img/sprite.svg#i-#{iconName}')
+//- usage +icon('iconName')

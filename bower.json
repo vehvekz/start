@@ -1,6 +1,6 @@
 {
-  "name": "MagJS",
-  "version": "0.0.0",
+  "name": "start-web",
+  "version": "0.0.1",
   "homepage": "https://github.com/vehvekz/start",
   "authors": [
     "Alexey Savkin <savkinshot@gmail.com>"
@@ -14,8 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4",
-    "bourbon": "~4.2.6",
-    "foundation-sites": "^6.1.2"
+    "jquery": "~2.2.0",
+    "foundation-sites": "^6.1.2",
+    "Scut": "scut#^1.4.0"
   }
 }

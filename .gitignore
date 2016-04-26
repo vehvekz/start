@@ -1,7 +1,10 @@
-# Dependency directory
+### Dependency directory ###
 node_modules
+
+
+### PSD tamplates ###
 PSD
-dist
+*.psd
 
 ### Sass ###
 .sass-cache
@@ -13,5 +16,5 @@ bower_components
 .bower-registry
 .bower-tmp
 
-### Build my Site ###
-build
+### Build result ###
+dist
